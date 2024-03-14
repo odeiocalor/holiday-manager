@@ -1,7 +1,10 @@
 import NextAuth, { NextAuthConfig } from "next-auth"
 import Google from "next-auth/providers/google"
+import { DrizzleAdapter } from "@auth/drizzle-adapter"
+import db from "@/db/drizzle"
 
 export const authConfig = {
+    adapter: DrizzleAdapter(db),
     providers: [
         Google
     ],
