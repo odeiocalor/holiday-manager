@@ -13,7 +13,12 @@ export const authConfig = {
             session.user.id = user.id
             return session
         },
+        authorized({ request, auth }) {
+            console.log(`🔒 - Route: ${request.nextUrl} - Auth: ${JSON.stringify(auth?.user)}`);
+
+            return true
+        },
     }
 } satisfies NextAuthConfig
 
-export const { handlers, auth, signIn, signOut, } = NextAuth(authConfig)
+export const { handlers: { GET, POST }, auth, signIn, signOut, } = NextAuth(authConfig)
