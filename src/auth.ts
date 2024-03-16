@@ -21,4 +21,4 @@ export const authConfig = {
     }
 } satisfies NextAuthConfig
 
-export const { handlers: { GET, POST }, auth, signIn, signOut, } = NextAuth(authConfig)
+export const { handlers: { GET, POST }, auth, signIn, signOut } = NextAuth(authConfig)
