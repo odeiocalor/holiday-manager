@@ -13,8 +13,10 @@ export default function DashboardLayout({
         <div className={cn(
             "min-h-full min-w-full flex flex-col",
         )}>
+            {/* Only displayed until medium screen */}
             <DashboardMobileHeader />
             {children}
+            {/* Only displayed until medium screen */}
             <DashboardMobileNav />
         </div>
     )
