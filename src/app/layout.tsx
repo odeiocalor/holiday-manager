@@ -24,9 +24,9 @@ export default function RootLayout({
     return (
         <html lang="pt-BR" suppressHydrationWarning>
             <body className={cn(
-                "min-h-screen min-w-full flex font-sans antialiased",
+                "min-h-screen min-w-full flex font-sans antialiased pb-14 md:pb-0",
                 "bg-neutral-50 dark:bg-neutral-800",
-                "text-black dark:text-white",
+                "text-neutral-900 dark:text-neutral-100",
                 fontSans.variable
             )}>
                 <ThemeProvider>
