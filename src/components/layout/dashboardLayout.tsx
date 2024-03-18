@@ -1,5 +1,5 @@
 import DashboardMobileHeader from "@/components/header/dashboardMobileHeader"
-import DashboardMobileNav from "@/components/nav/dashboardMobileNav"
+import { DashboardMobileNav } from "@/components/nav/dashboardMobileNav"
 
 import { cn } from "@/lib/utils"
 

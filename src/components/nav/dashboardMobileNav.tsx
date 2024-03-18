@@ -1,18 +1,19 @@
 'use client'
 
 import { usePathname } from 'next/navigation'
+import Link from 'next/link'
 
-import { navLinks } from "@/components/nav/config"
-import DashboardMobileNavItem from "@/components/nav/dashboardMobileNavItem"
+import { navLinks, type NavLink } from "@/components/nav/config"
+import { buttonIconVariants } from '@/components/button/buttonIcon'
 
 import { cn } from "@/lib/utils"
 
-export default function DashboardMobileNav() {
+export function DashboardMobileNav() {
     const pathname = usePathname()
 
     return (
         <nav className={cn(
-            "mt-auto h-14 items-center justify-around p-2",
+            "fixed bottom-0 left-0 h-14 w-full items-center justify-around p-2",
             "bg-neutral-200 dark:bg-neutral-900",
             "flex md:hidden",
         )}>
@@ -24,5 +25,26 @@ export default function DashboardMobileNav() {
                 )
             })}
         </nav>
+    )
+}
+
+type DashboardMobileNavItemProps = {
+    link: NavLink
+    isActive: boolean
+}
+
+export function DashboardMobileNavItem({ link, isActive }: DashboardMobileNavItemProps) {
+    const { name, href, icon: Icon } = link
+
+    return (
+        <Link
+            key={name}
+            href={href}
+            className={buttonIconVariants({ variant: isActive ? "active" : undefined })}
+            title={name}
+            aria-label={name}
+        >
+            <Icon />
+        </Link>
     )
 }
