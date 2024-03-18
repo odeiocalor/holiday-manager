@@ -1,18 +1,19 @@
-import { cn } from '@/lib/utils'
-import { ReactNode } from 'react'
+import { cva, type VariantProps } from 'class-variance-authority'
 
-export const MaxWidthWrapper = ({
+import { cn } from '@/lib/utils'
+
+export function MaxWidthWrapper({
     className,
     children,
 }: {
     className?: string
-    children?: ReactNode
-}) => {
+    children?: React.ReactNode
+}) {
     return (
         <div
             className={cn(
                 "mx-auto w-full",
-                "px-3 md:px-5",
+                "px-5 md:px-5",
                 "py-3 md:py-5",
                 className
             )}>
@@ -21,4 +22,30 @@ export const MaxWidthWrapper = ({
     )
 }
 
-export default MaxWidthWrapper
+export const separatorVariants = cva(
+    "bg-neutral-500",
+    {
+        variants: {
+            orientation: {
+                horizontal: "h-px w-full",
+                vertical: "h-full w-px",
+            },
+        },
+        defaultVariants: {
+            orientation: "horizontal",
+        },
+    }
+)
+
+interface SeparatorProps
+    extends React.HTMLAttributes<HTMLDivElement>,
+    VariantProps<typeof separatorVariants> { }
+
+
+export function Separator({
+    orientation,
+    className,
+    ...props
+}: SeparatorProps) {
+    return <div className={cn(separatorVariants({ orientation }), className)} {...props} />
+}
