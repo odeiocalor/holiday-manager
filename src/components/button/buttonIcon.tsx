@@ -4,7 +4,7 @@ import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from '@/lib/utils'
 
 const buttonIconVariants = cva(
-    "inline-flex items-center justify-center rounded-full hover:bg-neutral-300 dark:hover:bg-neutral-700",
+    "inline-flex items-center justify-center rounded-full hover:bg-neutral-500 transition-all duration-300 ease-in-out",
     {
         variants: {
             size: {
@@ -12,6 +12,10 @@ const buttonIconVariants = cva(
                 md: "w-10 h-10",
                 lg: "w-12 h-12",
             },
+            variant: {
+                active: "text-primary",
+                skeleton: "bg-neutral-400 dark:bg-neutral-600",
+            }
         },
         defaultVariants: {
             size: "md",
@@ -20,7 +24,7 @@ const buttonIconVariants = cva(
 )
 
 
-interface ButtonIconProps
+export interface ButtonIconProps
     extends ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof buttonIconVariants> {
     children?: React.ReactNode
@@ -28,17 +32,16 @@ interface ButtonIconProps
     className?: string
 }
 
-function ButtonIcon({ children, label, size, className, ...rest }: ButtonIconProps) {
+function ButtonIcon({ variant, size, title, children, className, ...rest }: ButtonIconProps) {
     return (
         <button
             className={cn(
                 buttonIconVariants({
+                    variant,
                     size,
                 }),
                 className
             )}
-            title={label}
-            aria-label={label}
             {...rest}
         >
             {children}
