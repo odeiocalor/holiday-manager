@@ -14,12 +14,12 @@ export default async function UserDropdown() {
             "w-52"
         )}>
             <span className="text-accent">{session?.user?.name || "Nome de Usuário"}</span>
-            <Separator orientation='horizontal' className="my-2" />
+            <Separator orientation='horizontal' className="my-3" />
             <SignOutButton signOut={async () => {
                 "use server"
                 await signOut({ redirectTo: "/api/auth/signin" })
             }} />
-            <Separator orientation='horizontal' className="my-2" />
+            <Separator orientation='horizontal' className="my-3" />
             <ThemeController />
         </Dropdown>
     )
