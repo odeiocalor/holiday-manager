@@ -11,7 +11,7 @@ export default function Dropdown({ positionX, positionY, children, className }: 
     return (
         <div className={cn(
             "absolute p-4 rounded-md shadow-lg",
-            "bg-neutral-200 dark:bg-neutral-700",
+            "bg-neutral-300 dark:bg-neutral-700",
             "hidden group-hover:block",
             { "top-full mt-1 before:absolute before:left-0 before:-top-4 before:h-4 before:w-full": positionY === "bottom" },
             { "bottom-full mb-1 after:absolute after:left-0 after:-bottom-4 after:h-4 after:w-full": positionY === "top" },
