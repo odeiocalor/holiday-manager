@@ -28,7 +28,7 @@ const textVariants = cva(
                 titleAccentTwo: "font-bold text-neutral-500 dark:text-neutral-400 text-2xl",
                 titleAccentThree: "font-bold text-neutral-500 dark:text-neutral-400 text-xl",
                 bodyOne: "text-neutral-900 dark:text-neutral-100",
-                bodyTwo: "text-neutral-500 dark:text-neutral-400",
+                bodyAccentOne: "text-neutral-500 dark:text-neutral-400",
             }
         },
         defaultVariants: {
