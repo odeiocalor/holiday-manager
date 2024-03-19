@@ -42,6 +42,8 @@ function ButtonIcon({ variant, size, title, children, className, ...rest }: Butt
                 }),
                 className
             )}
+            title={title}
+            aria-label={title}
             {...rest}
         >
             {children}
