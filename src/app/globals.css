@@ -4,11 +4,11 @@
 
 @layer base {
     :root {
-        --color-primary-rgb: 151, 7, 235;
+        --color-primary-rgb: 151 7 235;
         --color-primary-hex: #9707eb;
-        --color-secondary-rgb: 125, 11, 191;
+        --color-secondary-rgb: 125 11 191;
         --color-secondary-hex: #7d0bbf;
-        --color-tertiary-rgb: 169, 67, 230;
+        --color-tertiary-rgb: 169 67 230;
         --color-tertiary-hex: #a943e6;
     }
 }

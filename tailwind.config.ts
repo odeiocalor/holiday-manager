@@ -15,9 +15,9 @@ const config: Config = {
                 sans: ["var(--font-sans)", ...fontFamily.sans],
             },
             colors: {
-                primary: "rgb(var(--color-primary-rgb))",
-                secondary: "rgb(var(--color-secondary-rgb))",
-                tertiary: "rgb(var(--color-tertiary-rgb))",
+                primary: "rgb(var(--color-primary-rgb) / <alpha-value>)",
+                secondary: "rgb(var(--color-secondary-rgb) / <alpha-value>)",
+                tertiary: "rgb(var(--color-tertiary-rgb) / <alpha-value>)",
             }
         },
     },
