@@ -18,7 +18,7 @@ export default function DashboardLayout({
             <DashboardMobileHeader />
             {/* Only displayed after medium screen */}
             <DashboardNav />
-            <div className={cn("flex-1")}>
+            <div className={cn("flex flex-1 flex-col")}>
                 {/* Only displayed after medium screen */}
                 <DashboardHeader />
                 {children}
