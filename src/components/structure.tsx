@@ -7,11 +7,11 @@ export const containerVariants = cva(
     {
         variants: {
             padding: {
-                "p-sm": "p-4",
-                "p-md": "p-5",
-                "p-lg": "p-6",
-                "p-xl": "p-7",
-                "p-2xl": "p-8",
+                "p-sm": "p-2 md:p-3 lg:p-4",
+                "p-md": "p-4 md:p-5 lg:p-6",
+                "p-lg": "p-6 md:p-7 lg:p-8",
+                "p-xl": "p-8 md:p-9 lg:p-10",
+                "p-2xl": "p-10 md:p-11 lg:p-12",
             },
             variant: {
                 primary: "bg-neutral-100 dark:bg-neutral-900 rounded-2xl",
@@ -38,8 +38,7 @@ export function Container({
     return (
         <div
             className={cn(
-                containerVariants({ padding, variant }),
-                className
+                containerVariants({ padding, variant, className }),
             )}>
             {children}
         </div>
@@ -71,5 +70,5 @@ export function Separator({
     className,
     ...props
 }: SeparatorProps) {
-    return <div className={cn(separatorVariants({ orientation }), className)} {...props} />
+    return <div className={cn(separatorVariants({ orientation, className }))} {...props} />
 }
