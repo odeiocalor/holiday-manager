@@ -15,7 +15,7 @@ function HeaderTitleSkeleton() {
     )
 }
 
-export default function HeaderTitle() {
+export default function PageHeaderTitle() {
     const pathname = usePathname()
 
     if (!pathname) {
