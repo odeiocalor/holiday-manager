@@ -2,19 +2,43 @@ import { cva, type VariantProps } from 'class-variance-authority'
 
 import { cn } from '@/lib/utils'
 
-export function MaxWidthWrapper({
+export const containerVariants = cva(
+    "w-full",
+    {
+        variants: {
+            padding: {
+                "p-sm": "p-4",
+                "p-md": "p-5",
+                "p-lg": "p-6",
+                "p-xl": "p-7",
+                "p-2xl": "p-8",
+            },
+            variant: {
+                primary: "bg-neutral-100 dark:bg-neutral-900 rounded-2xl",
+                secondary: "bg-neutral-200 dark:bg-neutral-800 rounded-2xl",
+                tertiary: "bg-neutral-300 dark:bg-neutral-700 rounded-2xl",
+            }
+        },
+        defaultVariants: {
+            padding: "p-md",
+        },
+    }
+)
+
+interface ContainerProps
+    extends React.HTMLAttributes<HTMLDivElement>,
+    VariantProps<typeof containerVariants> { }
+
+export function Container({
+    padding,
+    variant,
     className,
     children,
-}: {
-    className?: string
-    children?: React.ReactNode
-}) {
+}: ContainerProps) {
     return (
         <div
             className={cn(
-                "mx-auto w-full",
-                "px-5 md:px-5",
-                "py-3 md:py-5",
+                containerVariants({ padding, variant }),
                 className
             )}>
             {children}

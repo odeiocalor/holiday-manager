@@ -1,4 +1,5 @@
 import DashboardLayoutComponent from "@/components/layout/dashboardLayout"
+import { Container } from "@/components/structure"
 
 import { cn } from "@/lib/utils"
 
@@ -9,8 +10,9 @@ export default function DashboardLayout({
 }) {
     return (
         <DashboardLayoutComponent>
-            dashboard layout page
-            {children}
+            <Container>
+                {children}
+            </Container>
         </DashboardLayoutComponent>
     )
 }
