@@ -44,7 +44,7 @@ export interface TextProps
 function Text({ size, textColor, variant, children, className, ...props }: TextProps) {
     return (
         <div
-            className={cn(textVariants({ size, textColor, variant }), className)}
+            className={cn(textVariants({ size, textColor, variant, className }))}
             {...props}
         >
             {children}
