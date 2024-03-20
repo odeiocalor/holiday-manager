@@ -6,7 +6,7 @@ import Link from 'next/link'
 import { navLinks, type NavLink } from "@/components/nav/config"
 import { Logo } from "@/components/logo"
 
-import { cn } from "@/lib/utils"
+import { cn, navItemIsActive } from "@/lib/utils"
 
 export function DashboardNav() {
     const pathname = usePathname()
@@ -27,7 +27,7 @@ export function DashboardNav() {
                 "h-full"
             )}>
                 {navLinks.map((link) => {
-                    const isActive = pathname === link.href
+                    const isActive = navItemIsActive({ pathname, href: link.href })
 
                     return (
                         <DashboardNavItem

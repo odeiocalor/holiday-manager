@@ -6,7 +6,7 @@ import Link from 'next/link'
 import { navLinks, type NavLink } from "@/components/nav/config"
 import { buttonIconVariants } from '@/components/button/buttonIcon'
 
-import { cn } from "@/lib/utils"
+import { cn, navItemIsActive } from "@/lib/utils"
 
 export function DashboardMobileNav() {
     const pathname = usePathname()
@@ -14,11 +14,11 @@ export function DashboardMobileNav() {
     return (
         <nav className={cn(
             "fixed bottom-0 left-0 h-14 w-full items-center justify-around p-2",
-            "bg-neutral-200 dark:bg-neutral-900",
+            "bg-neutral-50 dark:bg-neutral-950",
             "flex md:hidden",
         )}>
             {navLinks.map((link) => {
-                const isActive = pathname === link.href
+                const isActive = navItemIsActive({ pathname, href: link.href })
 
                 return (
                     <DashboardMobileNavItem key={link.name} link={link} isActive={isActive} />

@@ -6,3 +6,7 @@ import { twMerge } from 'tailwind-merge'
 export const cn = (...inputs: ClassValue[]) => {
     return twMerge(clsx(inputs))
 }
+
+export const navItemIsActive = ({ pathname, href }: { pathname: string, href: string }) => {
+    return pathname === href || href !== "/" ? pathname?.startsWith(href) : false
+}
