@@ -1,16 +1,16 @@
 import DashboardLayoutComponent from "@/components/layout/dashboardLayout"
 import { Container } from "@/components/structure"
-
-import { cn } from "@/lib/utils"
+import PageHeaderTitle from "@/components/header/pageHeaderTitle"
 
 export default function DashboardLayout({
-    children, // will be a page or nested layout
+    children
 }: {
     children: React.ReactNode
 }) {
     return (
         <DashboardLayoutComponent>
-            <Container>
+            <Container padding="p-xl" className="h-full md:max-h-full flex flex-col gap-5">
+                <PageHeaderTitle />
                 {children}
             </Container>
         </DashboardLayoutComponent>
