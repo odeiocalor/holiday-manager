@@ -5,6 +5,7 @@ import { relations } from "drizzle-orm"
 import { plans } from "@/db/schema/plans"
 import { participants } from "@/db/schema/participants"
 import { activities } from "@/db/schema/activities"
+import { invites } from "@/db/schema/invites"
 
 export const users = pgTable("user", {
     id: text("id").notNull().primaryKey(),
@@ -16,8 +17,10 @@ export const users = pgTable("user", {
 
 export const usersRelations = relations(users, ({ many }) => ({
     plans: many(plans),
-    participant: many(participants),
-    activities: many(activities)
+    "plans_participating": many(participants),
+    "activities_created": many(activities),
+    "invites_received": many(invites, { relationName: 'invitedUser' }),
+    "invites_sent": many(invites, { relationName: 'invitingUser' })
 }))
 
 export const accounts = pgTable("account", {
