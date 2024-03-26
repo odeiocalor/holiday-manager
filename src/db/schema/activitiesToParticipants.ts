@@ -1,5 +1,5 @@
 import { pgTable, text, primaryKey } from "drizzle-orm/pg-core"
-import { relations } from "drizzle-orm"
+import { relations, type InferSelectModel, type InferInsertModel } from "drizzle-orm"
 
 import { participants } from "@/db/schema/participants"
 import { activities } from "@/db/schema/activities"
@@ -22,3 +22,6 @@ export const activitiesToParticipantsRelations = relations(activitiesToParticipa
         references: [participants.id],
     }),
 }));
+
+export type SelectActivitiesToParticipants = InferSelectModel<typeof activitiesToParticipants>
+export type InsertActivitiesToParticipants = InferInsertModel<typeof activitiesToParticipants>

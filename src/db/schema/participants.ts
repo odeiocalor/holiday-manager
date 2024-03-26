@@ -1,5 +1,5 @@
-import { pgTable, text, primaryKey, pgEnum, boolean } from "drizzle-orm/pg-core"
-import { relations } from "drizzle-orm"
+import { pgTable, text, primaryKey, boolean } from "drizzle-orm/pg-core"
+import { relations, type InferSelectModel, type InferInsertModel } from "drizzle-orm"
 
 import { users } from "@/db/schema/users"
 import { plans } from "@/db/schema/plans"
@@ -23,3 +23,6 @@ export const participantsRelations = relations(participants, ({ one, many }) => 
     }),
     "activities_to_participants": many(activitiesToParticipants)
 }))
+
+export type InsertParticipants = InferInsertModel<typeof participants>
+export type SelectParticipants = InferSelectModel<typeof participants>

@@ -1,5 +1,5 @@
 import { pgTable, text, timestamp, pgEnum } from "drizzle-orm/pg-core"
-import { relations } from "drizzle-orm"
+import { relations, type InferSelectModel, type InferInsertModel } from "drizzle-orm"
 
 import { users } from "@/db/schema/users"
 import { plans } from "@/db/schema/plans"
@@ -31,3 +31,6 @@ export const invitesRelations = relations(invites, ({ one }) => ({
         references: [plans.id]
     })
 }))
+
+export type SelectInvites = InferSelectModel<typeof invites>
+export type InsertInvites = InferInsertModel<typeof invites>

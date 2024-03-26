@@ -1,5 +1,5 @@
 import { timestamp, pgTable, text, primaryKey } from "drizzle-orm/pg-core"
-import { relations } from "drizzle-orm"
+import { relations, type InferSelectModel, type InferInsertModel } from "drizzle-orm"
 
 import { users } from "@/db/schema/users"
 import { participants } from "@/db/schema/participants"
@@ -12,7 +12,7 @@ export const plans = pgTable("plan", {
     adress: text("description"),
     dateStart: timestamp("date_start", { mode: "date" }),
     dateEnd: timestamp("date_end", { mode: "date" }),
-    creatorId: text('creator_id').references(() => users.id)
+    creatorId: text('creator_id').notNull().references(() => users.id)
 })
 
 export const plansRelations = relations(plans, ({ one, many }) => ({
@@ -23,3 +23,6 @@ export const plansRelations = relations(plans, ({ one, many }) => ({
     participants: many(participants),
     activities: many(activities)
 }))
+
+export type SelectPlans = InferSelectModel<typeof plans>
+export type InsertPlans = InferInsertModel<typeof plans>
