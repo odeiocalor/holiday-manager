@@ -12,8 +12,8 @@ export const activities = pgTable("activity", {
     adress: text("description"),
     dateStart: timestamp("date_start", { mode: "date" }),
     dateEnd: timestamp("date_end", { mode: "date" }),
-    creatorId: text("creator_id").references(() => users.id),
-    planId: text("plan_id").references(() => plans.id)
+    creatorId: text("creator_id").notNull().references(() => users.id),
+    planId: text("plan_id").notNull().references(() => plans.id)
 })
 
 export const activitiesRelations = relations(activities, ({ one, many }) => ({

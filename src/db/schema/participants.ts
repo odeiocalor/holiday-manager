@@ -8,8 +8,8 @@ import { activitiesToParticipants } from "@/db/schema/activitiesToParticipants"
 export const participants = pgTable("participant", {
     id: text("id").notNull().primaryKey(),
     canEdit: boolean("can_edit").default(false),
-    userId: text('user_id').references(() => users.id),
-    planId: text('plan_id').references(() => plans.id)
+    userId: text('user_id').notNull().references(() => users.id),
+    planId: text('plan_id').notNull().references(() => plans.id)
 })
 
 export const participantsRelations = relations(participants, ({ one, many }) => ({

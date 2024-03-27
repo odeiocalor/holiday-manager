@@ -9,9 +9,9 @@ export const inviteStatusEnum = pgEnum("invite_status", ["accepted", "denied", "
 export const invites = pgTable("invite", {
     id: text("id").notNull().primaryKey(),
     status: inviteStatusEnum("invite_status").default('waiting'),
-    invitedUserId: text('invited_user_id').references(() => users.id),
-    invitingUserId: text('inviting_user_id').references(() => users.id),
-    planId: text('plan_id').references(() => plans.id),
+    invitedUserId: text('invited_user_id').notNull().references(() => users.id),
+    invitingUserId: text('inviting_user_id').notNull().references(() => users.id),
+    planId: text('plan_id').notNull().references(() => plans.id),
     createdAt: timestamp('created_at', { mode: 'date' }).defaultNow()
 })
 
