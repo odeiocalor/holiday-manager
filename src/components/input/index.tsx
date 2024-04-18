@@ -4,7 +4,7 @@ import genericInputStyles from "@/components/genericInputStyles"
 import { cn } from "@/lib/utils"
 
 interface InputProps
-    extends React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement> { }
+    extends React.InputHTMLAttributes<HTMLInputElement> { }
 
 export default forwardRef<HTMLInputElement, InputProps>(function Input({
     className,
@@ -22,5 +22,3 @@ export default forwardRef<HTMLInputElement, InputProps>(function Input({
         />
     )
 })
-
-
