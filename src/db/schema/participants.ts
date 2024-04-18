@@ -1,12 +1,13 @@
 import { pgTable, text, primaryKey, boolean } from "drizzle-orm/pg-core"
 import { relations, type InferSelectModel, type InferInsertModel } from "drizzle-orm"
+import { randomUUID } from "crypto"
 
 import { users } from "@/db/schema/users"
 import { plans } from "@/db/schema/plans"
 import { activitiesToParticipants } from "@/db/schema/activitiesToParticipants"
 
 export const participants = pgTable("participant", {
-    id: text("id").notNull().primaryKey(),
+    id: text("id").notNull().default(randomUUID()).primaryKey(),
     canEdit: boolean("can_edit").default(false),
     userId: text('user_id').notNull().references(() => users.id),
     planId: text('plan_id').notNull().references(() => plans.id)

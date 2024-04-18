@@ -1,5 +1,6 @@
 import { pgTable, text, timestamp, pgEnum } from "drizzle-orm/pg-core"
 import { relations, type InferSelectModel, type InferInsertModel } from "drizzle-orm"
+import { randomUUID } from "crypto"
 
 import { users } from "@/db/schema/users"
 import { plans } from "@/db/schema/plans"
@@ -7,7 +8,7 @@ import { plans } from "@/db/schema/plans"
 export const inviteStatusEnum = pgEnum("invite_status", ["accepted", "denied", "waiting"])
 
 export const invites = pgTable("invite", {
-    id: text("id").notNull().primaryKey(),
+    id: text("id").notNull().default(randomUUID()).primaryKey(),
     status: inviteStatusEnum("invite_status").default('waiting'),
     invitedUserId: text('invited_user_id').notNull().references(() => users.id),
     invitingUserId: text('inviting_user_id').notNull().references(() => users.id),
