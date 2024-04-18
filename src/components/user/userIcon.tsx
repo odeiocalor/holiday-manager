@@ -9,7 +9,6 @@ import { cn } from "@/lib/utils"
 export async function UserIcon() {
     const session = await auth()
 
-
     if (!session) return null
 
     const userIconSizePx = 44
