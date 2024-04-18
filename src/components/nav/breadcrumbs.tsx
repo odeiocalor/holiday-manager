@@ -1,28 +1,33 @@
 "use client"
 
-import { usePathname } from "next/navigation"
+import { usePathname, useParams } from "next/navigation"
 import Link from "next/link"
 
-import { cn, capitalize } from "@/lib/utils"
+import { cn, capitalize, getPathnameArrayWithParamsKeys } from "@/lib/utils"
 import routes from "@/config/routes"
 
 export default function Breadcrumbs() {
     const pathname = usePathname()
+    const params = useParams()
 
     if (!pathname) return null
 
+    // filter(Boolean) removes empty strings
     const breadcrumbs = pathname
         .split("/")
         .filter(Boolean)
         .map((breadcrumb, index, arr) => {
             const isLast = index === arr.length - 1
 
-            const routeName = routes[`/${arr.slice(0, index + 1).join("/")}`].name
+            // Checks if the element is in the params, if so returns the object key
+            const arrayWithParamsKeys = getPathnameArrayWithParamsKeys(arr, params)
+
+            const routeName = routes[`/${arrayWithParamsKeys.slice(0, index + 1).join("/")}`].name
             const capitalizeBreadcrumb = breadcrumb.split("-").map(capitalize).join(" ")
 
             return {
                 name: routeName || capitalizeBreadcrumb,
-                href: `/${arr.slice(0, index + 1).join("/")}`,
+                href: `/${arrayWithParamsKeys.slice(0, index + 1).join("/")}`,
                 isLast,
             }
         })

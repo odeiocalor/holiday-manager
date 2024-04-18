@@ -1,31 +1,28 @@
 "use client"
 
-import { usePathname } from "next/navigation"
+import { usePathname, useParams } from "next/navigation"
 
 import { Text } from "@/components/text"
 
 import routes from "@/config/routes"
-import { cn } from "@/lib/utils"
+import { cn, getPathnameArrayWithParamsKeys } from "@/lib/utils"
 
-function HeaderTitleSkeleton() {
+export function PageHeaderTitleSkeleton() {
     return (
-        <span className={cn("w-8 h-5 bg-neutral-200 rounded-full animate-pulse")}>
-
-        </span>
+        <span className={cn("w-8 h-9 bg-neutral-200 rounded-full animate-pulse")}></span>
     )
 }
 
-export default function PageHeaderTitle() {
+export function PageHeaderTitle() {
     const pathname = usePathname()
+    const params = useParams()
 
-    if (!pathname) {
-        return <HeaderTitleSkeleton />
-    }
+    const arrayWithParamsKeys = getPathnameArrayWithParamsKeys(pathname, params)
 
     return (
         <Text variant="titleOne">
             <h2>
-                {routes[pathname]?.name}
+                {routes[arrayWithParamsKeys.join("/")]?.name}
             </h2>
         </Text>
     )
