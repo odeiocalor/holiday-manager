@@ -25,8 +25,9 @@ export const containerVariants = cva(
                 lg: "flex flex-col lg:flex-row",
             },
             variant: {
-                "form-column": "flex flex-col gap-6",
-                "form-row": "flex flex-col gap-6",
+                "default-page": "p-4 md:p-6 lg:p-10 md:pt-5 lg:pt-5",
+                "form-column": "flex flex-col gap-y-6",
+                "two-column-form-row": "flex flex-col lg:flex-row gap-x-14 gap-y-6",
                 "two-input-row": "flex flex-col gap-6 sm:flex-row lg:flex-col xl:flex-row",
             }
         }
