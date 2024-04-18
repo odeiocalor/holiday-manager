@@ -1,6 +1,6 @@
 import DashboardLayoutComponent from "@/components/layout/dashboardLayout"
-import { Container } from "@/components/structure"
-import PageHeaderTitle from "@/components/header/pageHeaderTitle"
+import Breadcrumbs from "@/components/nav/breadcrumbs"
+import { containerVariants } from "@/components/structure"
 
 import { cn } from "@/lib/utils"
 
@@ -11,8 +11,11 @@ export default function DashboardLayout({
 }) {
     return (
         <DashboardLayoutComponent>
-            <main className={cn("h-full md:max-h-full p-4 md:p-6 lg:p-10 flex flex-col gap-5")}>
-                <PageHeaderTitle />
+            <main className={cn(
+                "h-full md:max-h-full flex flex-col gap-5 md:gap-10",
+                containerVariants({ variant: "default-page" }),
+            )}>
+                <Breadcrumbs />
                 {children}
             </main>
         </DashboardLayoutComponent>
