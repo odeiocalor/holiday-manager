@@ -20,6 +20,12 @@ Developed with Next.js, Tailwind, Drizzle ORM, and Neon.
 - [ ] Create custom 404 page
 - [ ] Create custom error page
 
+### Controllers
+- [ ] Create Plans controller
+- [ ] Create Activities controller
+- [ ] Create Participants controller
+- [ ] Create Invites controller
+
 ### User
 - [ ] Create User Profile page
 - [ ] Create Edit User Profile page
@@ -32,7 +38,7 @@ Developed with Next.js, Tailwind, Drizzle ORM, and Neon.
 - [ ] Implement Calendar
 
 ### My Plans
-- [ ] Create My Plans page
+- [ ] Create My Plans listing page
 - [ ] Create Create Plan page
 - [ ] Create Plan Detail page
 - [ ] Create Edit Plan page
@@ -44,8 +50,11 @@ Developed with Next.js, Tailwind, Drizzle ORM, and Neon.
 - [ ] Create Invite form
 
 ### Participating
-- [ ] Create Participating page
+- [ ] Create Participating listing page
 - [ ] Create Plan Detail page
+- [ ] Create Edit Plan page (if participant can edit plan)
+- [ ] Create Create Activity form (if participant can edit plan)
+- [ ] Create Edit Activity form (if participant can edit plan)
 - [ ] Create Activity Detail view
 - [ ] Create Participant listing view
 - [ ] Create Invite listing view
