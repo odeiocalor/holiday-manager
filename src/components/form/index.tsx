@@ -1,50 +1,37 @@
+import { forwardRef } from "react"
 import { cva, type VariantProps } from "class-variance-authority"
 
 import { cn } from "@/lib/utils"
 
-const formVariants = cva(
-    "w-full flex flex-col gap-x-10 gap-y-6",
-    {
-        variants: {
-            variant: {
-                default: "lg:flex-row",
-                "dashboard-form-page": "lg:flex-row"
-            },
-        },
-    }
-)
+interface FormProps extends React.FormHTMLAttributes<HTMLFormElement> { }
 
-interface FormProps
-    extends React.FormHTMLAttributes<HTMLFormElement>,
-    VariantProps<typeof formVariants> { }
-
-export function Form({ variant, className, children, ...props }: FormProps) {
+export const Form = forwardRef<HTMLFormElement, FormProps>(function FormInner({ className, children, ...props }, ref) {
     return (
-        <form className={cn(
-            "",
-            formVariants({ variant }),
-            className
-        )}
+        <form ref={ref}
+            className={cn(
+                "w-full flex flex-col gap-x-10 gap-y-6",
+                className
+            )}
             {...props}
         >
             {children}
         </form>
     )
-}
+})
 
 export function FormItem({ className, children, ...props }: React.HTMLAttributes<HTMLDivElement>) {
     return <div className={cn("flex flex-col gap-2 w-full", className)} {...props}>{children}</div>
 }
 
 export function FormItemDescription({ className, children, ...props }: React.HTMLAttributes<HTMLDivElement>) {
-    return <p className={cn("text-sm text-neutral-500", className)} {...props}>{children}</p>
+    return <p className={cn("text-xs text-neutral-500", className)} {...props}>{children}</p>
 }
 
 const formItemMessageVariants = cva(
-    "text-sm",
+    "text-xs",
     {
         variants: {
-            type: {
+            variant: {
                 default: "text-neutral-500",
                 error: "text-red-500",
                 success: "text-green-500",
@@ -52,7 +39,7 @@ const formItemMessageVariants = cva(
             }
         },
         defaultVariants: {
-            type: "default",
+            variant: "default",
         },
     }
 )
@@ -61,6 +48,10 @@ interface FormItemMessageProps
     extends React.HTMLAttributes<HTMLDivElement>,
     VariantProps<typeof formItemMessageVariants> { }
 
-export function FormItemMessage({ type, className, children, ...props }: FormItemMessageProps) {
-    return <p className={cn(formItemMessageVariants({ type, className }))} {...props}>{children}</p>
+export function FormItemMessage({ variant, className, children, ...props }: FormItemMessageProps) {
+    return <p className={cn(formItemMessageVariants({ variant, className }))} {...props}>{children}</p>
+}
+
+export function FormActions({ className, children, ...props }: React.HTMLAttributes<HTMLDivElement>) {
+    return <div className={cn("flex justify-end mt-auto", className)} {...props}>{children}</div>
 }
